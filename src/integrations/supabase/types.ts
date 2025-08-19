@@ -14,13 +14,57 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      news_items: {
+        Row: {
+          created_at: string
+          id: string
+          is_seen: boolean
+          link: string
+          roman_summary: string | null
+          source: string | null
+          summary: string | null
+          title: string
+        }
+        Insert: {
+          created_at?: string
+          id: string
+          is_seen?: boolean
+          link: string
+          roman_summary?: string | null
+          source?: string | null
+          summary?: string | null
+          title: string
+        }
+        Update: {
+          created_at?: string
+          id?: string
+          is_seen?: boolean
+          link?: string
+          roman_summary?: string | null
+          source?: string | null
+          summary?: string | null
+          title?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
     }
     Functions: {
-      [_ in never]: never
+      get_latest_news: {
+        Args: { limit_count?: number }
+        Returns: {
+          created_at: string
+          id: string
+          is_seen: boolean
+          link: string
+          roman_summary: string
+          source: string
+          summary: string
+          title: string
+        }[]
+      }
     }
     Enums: {
       [_ in never]: never
